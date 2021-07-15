@@ -21,6 +21,11 @@ jobs:
         echo "$branchName"
         echo "::set-output name=BRANCH_NAME::$branchName"
           
+    - name: 'copy branch files'
+      shell: bash
+      run: |
+        cp -r content/${{ steps.version.outputs.BRANCH_NAME }} content/copy
+          
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
       with:
