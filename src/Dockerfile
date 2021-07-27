@@ -23,4 +23,5 @@ RUN dotnet publish "src.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+COPY content/copy /app/wwwroot
 ENTRYPOINT ["dotnet", "src.dll"]
