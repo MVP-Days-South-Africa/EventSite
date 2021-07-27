@@ -38,7 +38,7 @@ jobs:
         username: ${{ secrets.SP_CLIENTID }}
         password: ${{ secrets.SP_CLIENTSECRET }}
     - run: |
-        docker build --tag ${{ secrets.REGISTRY_LOGIN_SERVER }}/mvpdaysrsa:${{ github.sha }} --tag ${{ secrets.REGISTRY_LOGIN_SERVER }}/mvpdaysrsa:${{ steps.version.outputs.BRANCH_NAME }} -f build/Dockerfile .
+        docker build --tag ${{ secrets.REGISTRY_LOGIN_SERVER }}/mvpdaysrsa:${{ github.sha }} --tag ${{ secrets.REGISTRY_LOGIN_SERVER }}/mvpdaysrsa:${{ steps.version.outputs.BRANCH_NAME }} -f src/Dockerfile .
         docker push --all-tags ${{ secrets.REGISTRY_LOGIN_SERVER }}/mvpdaysrsa
         
     - name: 'Deploy to Azure Web App (staging)'
